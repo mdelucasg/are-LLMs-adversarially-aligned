@@ -43,7 +43,7 @@ python main.py \
     --password xxx \
     --model 0 \
     --aspect toxicity \
-    --subsample True
+    --subsample 1
 ```
 
 Key Descriptions:
@@ -52,7 +52,7 @@ Key Descriptions:
 - `password`: Specify the HuggingFace password of your account.
 - `model`: The model's ID.
 - `aspect`: Specify the aspect to attack, including "toxicity" or "ethics".
-- `subsample`: Specify the data source. You may use a subsample to avoid Rate Limit Exceeds Errors.
+- `subsample`: Specify the data source. You may use a subsample to avoid Rate Limit Exceeds Errors. (0 or 1, boolean)
 
 ## Contributions
 
