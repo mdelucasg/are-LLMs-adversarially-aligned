@@ -29,6 +29,12 @@ Currently, we leverage HuggingFace Chat API so we can try the following models. 
 
 ## Experiments
 
+First, you may create a conda environment,
+
+```bash
+conda create --name align --file align-env.txt
+```
+
 To run experiments, you may select an aspect and a model,
 
 ```bash
