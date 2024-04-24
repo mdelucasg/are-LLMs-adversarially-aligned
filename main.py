@@ -13,7 +13,7 @@ def parse_args():
     parser.add_argument('--password', type=str, help='Password to log in to huggingface')
     parser.add_argument('--model', type=int, default=0, help='Model to use. Current Model = CohereForAI/c4ai-command-r-plus')
     parser.add_argument('--aspect', type=str, choices=['toxicity', 'ethics'])
-    parser.add_argument('--subsample', type=bool, default=True, help='Subsample the data for testing purposes')
+    parser.add_argument('--subsample', type=int, default=1, help='Subsample the data for testing purposes')
 
     return parser.parse_args()
 
@@ -32,9 +32,10 @@ def main():
         base_path = ETHICS_PATH
         base_prompt = ethic_prompt
     
-    data = load_data(base_path)
+    data = load_data(base_path, subsample=args.subsample)
+
     results = {args.aspect: {}}
-    # Print model name 
+
     model_name = models_dict[args.model].split("/")[1]
     print(f"Model: {model_name}", end="\r")
 
@@ -61,14 +62,12 @@ def main():
             "judgement": judgement
         }
         results[args.aspect][model_name].append(result)
-        # Sleep to avoid rate limits
+        
         seconds = random.randint(5, 20)
         time.sleep(seconds)
 
-    # Clear the conversation
     chatbot.delete_all_conversations()
 
-    # Save results
     with open(f"outputs/{args.aspect}_{model_name}_v2.json", 'w') as f:
         json.dump(results, f)
 
