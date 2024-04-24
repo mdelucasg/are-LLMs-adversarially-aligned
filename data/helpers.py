@@ -36,6 +36,7 @@ def load_data(base_path = TOXICITY_PATH, subsample=True):
             raw_data = load_dataset("hendrycks/ethics")
             data = []
             for prompt in raw_data['train']:
-                data.append(prompt['input'])
+                if prompt['label'] == 1:
+                    data.append(prompt['input'])
 
     return data

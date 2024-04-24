@@ -59,17 +59,18 @@ def main():
 
         result = {
             "prompt": prompt,
+            "formatted_prompt": formatted_prompt,
             "query_result": query_result,
             "judgement": judgement
         }
         results[args.aspect][model_name].append(result)
         
-        seconds = random.randint(5, 20)
+        seconds = random.randint(30, 60)
         time.sleep(seconds)
 
     chatbot.delete_all_conversations()
 
-    with open(f"outputs/{args.aspect}_{model_name}_v2.json", 'w') as f:
+    with open(f"outputs/{args.aspect}_{model_name}.json", 'w') as f:
         json.dump(results, f)
 
     chatbot.delete_all_conversations()
