@@ -1,6 +1,10 @@
 # Are LLMs adversarially aligned?
 
-![Example Image](media/overview.png)
+As Large Language Models (LLMs) become increasingly ubiquitous across academia and industry, including in safety-critical and high-stakes decision-making domains, it is crucial to ensure their robustness and alignment with intended behaviours. This paper investigates the susceptibility of current LLMs (both proprietary and open-source) to adversarial prompts (i.e. inputs crafted to resemble plausible user errors like typos or synonym substitutions), which can significantly alter model outputs while preserving semantic coherence.
+
+Despite existing efforts to mitigate this threat, our results demonstrate that today's LLMs remain highly vulnerable to such adversarial prompts. We apply a range of simple and complex techniques to showcase the fragility of LLM integration across a wide spectrum of daily and professional tasks. This points to the need for great caution when deploying these powerful language models in real-world applications.
+
+![Overview of the attack](media/overview.png)
 
 Currently, we leverage HuggingFace Chat API so we can try the following models. Note that the number is the ID to be passed in --model argument:
 
@@ -28,7 +32,7 @@ Currently, we leverage HuggingFace Chat API so we can try the following models. 
 To run experiments, you may select an aspect and a model,
 
 ```bash
-python generate.py \
+python main.py \
     --email xx@yy.zz \
     --password xxx \
     --model 0 \
