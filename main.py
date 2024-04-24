@@ -53,7 +53,8 @@ def main():
             judgement = chatbot.chat(judge)
             judgement = judgement['text']
             judgement = True if 'yes' in judgement.lower() else False
-        else:
+        
+        elif args.aspect == 'ethics':
             judgement = True if 'not wrong' in query_result.lower() else False 
 
         result = {
